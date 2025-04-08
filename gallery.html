@@ -8,6 +8,7 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap"
       rel="stylesheet" />
@@ -35,14 +36,15 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
 
-        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-          <i class="bi bi-list hamburger-icon"></i>
-
-          <i class="bi bi-x-lg exit-icon"></i>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="bi bi-list"></i>
         </div>
       </nav>
 
       <div class="nav-overlay" id="navOverlay">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="bi bi-x-lg"></i>
+        </div>
         <ul class="mobile-nav-links">
           <li><a href="about.html">About</a></li>
           <li><a href="gallery.html">Gallery</a></li>
@@ -54,71 +56,54 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section class="gallery-hero">
         <div class="overlay">
           <div class="hero-text">
-            <h1 class="king-name">Ambassador Miskoom Yahaya Kwande</h1>
+            <h1 class="gallery-title">Explore Kwande's Heritage</h1>
             <div class="gold-divider"></div>
-            <h2 class="king-title">His Royal Majesty</h2>
-            <p class="king-year">Reign: <span>2015 - Present</span></p>
-            <p class="king-bio">
-              A guardian of legacy and tradition — wise, resolute, and revered
-              by his people.
+            <h2 class="gallery-subtitle">A Visual Journey Through Kwande</h2>
+            <p class="gallery-description">
+              Discover the history, culture, and beauty of Kwande through images
+              captured from the heart of the region.
             </p>
-            <p class="king-quote">“A crown is not just worn, it is lived.”</p>
           </div>
         </div>
         <div class="scroll-indicator">
           <span></span>
         </div>
       </section>
-      <section class="about">
-        <div class="about-logo">
-          <img src="./img/logo.jpg" alt="Kwande logo" />
-        </div>
-        <div class="about-details">
-          <h2>About Us</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            minima provident aspernatur eius exercitationem. Eius facere
-            sapiente praesentium nisi magnam illum ipsam obcaecati tempore vel
-            pariatur, possimus veniam optio voluptas, explicabo natus
-            dignissimos nulla ullam? Dolore dolores rem necessitatibus
-            reiciendis neque fugit ipsa. Cum doloribus eaque ex debitis
-            architecto minus.
-          </p>
-          <button class="read-more">Read More</button>
+
+      <section class="gallery-wrapper">
+        <div class="gallery">
+          <!-- Add as many images as you like -->
+          <img src="./img/logo.jpg" alt="Gallery Image 1" class="gallery-img" />
+          <img src="./img/king.jpg" alt="Gallery Image 2" class="gallery-img" />
+          <!-- Add as many images as you like -->
+          <img src="./img/logo.jpg" alt="Gallery Image 1" class="gallery-img" />
+          <img src="./img/king.jpg" alt="Gallery Image 2" class="gallery-img" />
+          <!-- Add as many images as you like -->
+          <img src="./img/logo.jpg" alt="Gallery Image 1" class="gallery-img" />
+          <img src="./img/king.jpg" alt="Gallery Image 2" class="gallery-img" />
+          <!-- Add as many images as you like -->
+          <img src="./img/logo.jpg" alt="Gallery Image 1" class="gallery-img" />
+          <img src="./img/king.jpg" alt="Gallery Image 2" class="gallery-img" />
+          <!-- Add as many images as you like -->
+          <img src="./img/logo.jpg" alt="Gallery Image 1" class="gallery-img" />
+          <img src="./img/king.jpg" alt="Gallery Image 2" class="gallery-img" />
+          <!-- ...repeat for 100+ images -->
         </div>
       </section>
 
-      <section class="explore-kwande">
-        <div class="container text-center">
-          <h2 class="section-title">Explore Kwande</h2>
-          <div class="kwande-grid">
-            <a href="gallery.html" class="kwande-box">
-              <div class="icon-wrap"><i class="bi bi-images"></i></div>
-              <h5>Gallery</h5>
-              <p>View our rich heritage in pictures</p>
-            </a>
-            <a href="#activities" class="kwande-box">
-              <div class="icon-wrap"><i class="fa-solid fa-handshake"></i></div>
-              <h5>Activities</h5>
-              <p>Discover vibrant cultural events</p>
-            </a>
-            <a href="#video" class="kwande-box">
-              <div class="icon-wrap"><i class="bi bi-play-circle"></i></div>
-              <h5>Videos</h5>
-              <p>Experience Kwande through stories</p>
-            </a>
-            <a href="#contact" class="kwande-box">
-              <div class="icon-wrap"><i class="fa-solid fa-envelope"></i></div>
-              <h5>Contact</h5>
-              <p>Reach out or visit us directly</p>
-            </a>
-          </div>
+      <div class="modal">
+        <div class="modal-inner">
+          <button class="nav prev">&#10094;</button>
+          <img src="" alt="Full Image" class="modal-img" />
+          <button class="nav next">&#10095;</button>
+          <span class="close">&times;</span>
         </div>
-      </section>
+      </div>
     </main>
+
     <footer class="kwande-footer text-center">
       <div class="container">
         <div class="footer-top">
