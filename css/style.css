@@ -339,43 +339,6 @@ header {
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .overlay {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6rem 2rem 2rem;
-    background: linear-gradient(
-      to bottom,
-      rgba(17, 17, 17, 0.95),
-      rgba(17, 17, 17, 0.7),
-      transparent
-    );
-    text-align: center;
-  }
-
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .king-name {
-    font-size: 2.2rem;
-  }
-
-  .king-title {
-    font-size: 1rem;
-  }
-
-  .king-year,
-  .king-bio {
-    font-size: 0.95rem;
-  }
-
-  .about {
-    flex-direction: column;
-  }
-}
-
 .nav-overlay {
   position: fixed;
   top: 0;
@@ -430,19 +393,6 @@ header {
   font-size: 2.2rem;
   color: #fff;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  .menu-toggle i:nth-child(2) {
-    color: red;
-  }
-
-  .nav-links {
-    display: none;
-  }
 }
 
 .gallery-wrapper {
@@ -543,18 +493,6 @@ header {
   color: white;
 }
 
-@media (max-width: 1200px) {
-  .gallery {
-    column-count: 3;
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery {
-    column-count: 2;
-  }
-}
-
 @media (max-width: 480px) {
   .gallery {
     column-count: 1;
@@ -565,8 +503,7 @@ header {
     display: none;
   }
 }
-
-.section-title {
+* .section-title {
   font-size: 2.3rem;
   font-weight: 600;
   color: #30382f;
@@ -747,6 +684,51 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+  .overlay {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(17, 17, 17, 0.95),
+      rgba(17, 17, 17, 0.7),
+      transparent
+    );
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .king-name {
+    font-size: 2.2rem;
+  }
+
+  .king-title {
+    font-size: 1rem;
+  }
+
+  .king-year,
+  .king-bio {
+    font-size: 0.95rem;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+  .exit-menu i {
+    margin-left: 345px;
+  }
+  .nav-links {
+    display: none;
+  }
+
   .navbar {
     display: flex;
     gap: 10px;
@@ -766,10 +748,11 @@ header {
     max-height: 90%;
     padding: 1rem;
   }
-  .modal-inner img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .modal-inner .prev,
+  .modal-inner .next {
+    display: block;
+    margin-left: 60px;
+    margin-right: 60px;
   }
 
   .modal-img {
@@ -784,5 +767,66 @@ header {
 
     justify-content: center;
     align-items: center;
+  }
+  .gallery-hero {
+    position: relative;
+    height: 100vh; /* Ensure the hero takes up the full viewport height */
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Hero overlay with gradient */
+  .gallery-hero .overlay,
+  .hero .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%; /* Half of the hero height */
+    background: linear-gradient(
+      to top,
+      rgba(17, 17, 17, 0.9),
+      transparent
+    ); /* Gradient from bottom */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 1rem; /* Some space from the bottom */
+  }
+
+  /* Adjust the text to be slightly above the bottom */
+  .hero-text {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Optional: Semi-transparent background */
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem; /* Add margin to move the text up from the very bottom */
+  }
+
+  .gallery-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .gold-divider {
+    width: 50px;
+    height: 3px;
+    background-color: gold;
+    margin: 0 auto 0.8rem;
+  }
+
+  .gallery-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .gallery-description {
+    font-size: 0.95rem;
+  }
+
+  .scroll-indicator {
+    display: none;
   }
 }
