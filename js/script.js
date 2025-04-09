@@ -1,63 +1,43 @@
-const aboutSection = document.querySelector(".about");
-const exploreKwandeSection = document.querySelector(".explore-kwande");
-
-//  about section
-const aboutObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.3,
-  }
-);
-
-// Ensure the about section is observed
-if (aboutSection) {
-  aboutObserver.observe(aboutSection);
-} else {
-  console.log("About section not found.");
-}
-
-// Intersection Observer for the exploreKwandeSection
-const exploreObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.3,
-  }
-);
-
-// Ensure the exploreKwande section has an observer
-if (exploreKwandeSection) {
-  exploreObserver.observe(exploreKwandeSection);
-} else {
-  console.log("Explore Kwande section not found.");
-}
-
-// Gallery Modal Code
-const galleryImages = document.querySelectorAll(".gallery-img");
+const aboutSectionEl = document.querySelector(".about");
+const exploreKwandeSectionEl = document.querySelector(".explore-kwande");
+const galleryImagesEl = document.querySelectorAll(".gallery-img");
 const modal = document.querySelector(".modal");
 const modalImg = document.querySelector(".modal-img");
 const closeBtn = document.querySelector(".close");
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
+const overlay = document.querySelector("#navOverlay");
 
+function createObserver(element) {
+  if (!element) return;
+
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
+
+  observer.observe(element);
+}
+
+// Call it for both sections
+createObserver(aboutSectionEl);
+createObserver(exploreKwandeSectionEl);
+
+// Gallery
 let currentIndex = 0;
 let images = [];
 
-if (galleryImages.length > 0) {
-  galleryImages.forEach((img, i) => {
+if (galleryImagesEl.length > 0) {
+  galleryImagesEl.forEach((img, i) => {
     images.push(img.src);
     img.addEventListener("click", () => {
       currentIndex = i;
@@ -93,6 +73,5 @@ prevBtn.addEventListener("click", () => {
 });
 
 function toggleMenu() {
-  const overlay = document.getElementById("navOverlay");
   overlay.classList.toggle("active");
 }

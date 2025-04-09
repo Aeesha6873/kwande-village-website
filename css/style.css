@@ -1,9 +1,14 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   --dark-olive: #30382f;
   --cream: #fffbdf;
   --accent: #e0c097;
-  --glass-dark: rgba(48, 56, 47, 0.8);
-  --hover-bg: rgba(255, 251, 223, 0.1);
   --text-glow: rgba(255, 251, 223, 0.25);
 }
 
@@ -22,10 +27,15 @@ header {
   padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  background: var(--glass-dark);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(48, 56, 47, 0.85),
+    rgba(17, 17, 17, 0.85)
+  );
+
+  backdrop-filter: blur(15px);
   border-bottom: 2px solid rgba(255, 251, 223, 0.1);
-  box-shadow: 0 0 20px rgba(48, 56, 47, 0.4);
+  box-shadow: 0 10 30px rgba(48, 56, 47, 0.4);
   animation: floatIn 1.2s ease-out forwards;
 }
 
@@ -47,11 +57,15 @@ header {
 
 .logo-text {
   font-family: "Playfair Display", serif;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: var(--cream);
-  text-shadow: 0 0 6px var(--text-glow);
-  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px var(--text-glow), 0 0 20px rgba(255, 251, 223, 0.1);
+  letter-spacing: 1.5px;
+  transition: transform 0.3s ease;
+}
+.logo-text:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -91,7 +105,9 @@ header {
 
 .nav-links a:hover {
   color: var(--accent);
-  transform: scale(1.05);
+  background-color: rgba(255, 251, 223, 0.05);
+  box-shadow: 0 0 10px var(--accent);
+  transform: translateY(-2px);
 }
 
 .nav-links a:hover::after {
@@ -107,6 +123,16 @@ header {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px var(--cream);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent);
   }
 }
 
@@ -338,17 +364,24 @@ header {
   background-color: #3e463b;
   transform: translateY(-2px);
 }
-
+.read-more a {
+  font-size: 1.2rem;
+  font-family: "Segoe UI", sans-serif;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 .nav-overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 40%;
+  width: 60%;
   height: 100vh;
   background: linear-gradient(135deg, #2d3b2f, #4e5c44);
   display: none;
   flex-direction: column;
   justify-content: flex-start;
+
   padding-top: 5rem;
   z-index: 999;
   opacity: 0;
@@ -384,7 +417,9 @@ header {
 }
 
 .mobile-nav-links a:hover {
-  color: #ffc107;
+  color: var(--accent);
+  background-color: rgba(255, 251, 223, 0.05);
+  transform: translate(-2px);
   text-decoration: underline wavy;
 }
 
@@ -395,7 +430,7 @@ header {
   cursor: pointer;
 }
 
-.gallery-wrapper {
+.gallery-container {
   padding: 40px;
   background: #fff8dc;
 }
@@ -493,17 +528,7 @@ header {
   color: white;
 }
 
-@media (max-width: 480px) {
-  .gallery {
-    column-count: 1;
-  }
-
-  .prev,
-  .next {
-    display: none;
-  }
-}
-* .section-title {
+.section-title {
   font-size: 2.3rem;
   font-weight: 600;
   color: #30382f;
@@ -616,20 +641,6 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
-
-.gallery-hero {
-  background: url("../img/king.jpg") no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-top: 90px;
-  font-family: "Playfair Display", serif;
-}
-
 .overlay {
   width: 100%;
   height: 100%;
@@ -645,15 +656,7 @@ header {
   box-sizing: border-box;
 }
 
-.hero-text {
-  max-width: 520px;
-  color: #f9f5e9;
-  animation: riseFade 1.2s ease-out forwards;
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-}
-
-.gallery-title {
+.hero-title {
   font-size: 2.8rem;
   font-weight: 700;
   background: linear-gradient(270deg, #e4c15d, #fff8dc, #d4b24c);
@@ -666,7 +669,7 @@ header {
   line-height: 1.2;
 }
 
-.gallery-subtitle {
+.hero-subtitle {
   font-size: 1.15rem;
   font-style: italic;
   color: #fdf6dd;
@@ -674,7 +677,7 @@ header {
   line-height: 1.2;
 }
 
-.gallery-description {
+.hero-description {
   font-size: 1.05rem;
   color: #eaeaea;
   border-left: 3px solid #e4c15d;
@@ -682,13 +685,96 @@ header {
   line-height: 1.4;
   margin-top: 0.2rem;
 }
+.video-main-section {
+  background-color: var(--cream);
+  padding: 5rem 2rem;
+  color: var(--dark-olive);
+  text-align: center;
+}
+
+.video-main-section .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--dark-olive);
+  margin-bottom: 0.5rem;
+}
+
+.video-main-section .section-subtitle {
+  font-size: 1.2rem;
+  color: var(--dark-olive);
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.video-card {
+  background: var(--dark-olive);
+  border: 1px solid rgba(255, 251, 223, 0.1);
+  border-radius: 15px;
+  padding: 1rem;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.video-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.video-description {
+  font-size: 1rem;
+  color: rgba(255, 251, 223, 0.75);
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    column-count: 1;
+  }
+
+  .prev,
+  .next {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .overlay {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 6rem 2rem 2rem;
+    padding: 6rem 0 2rem;
+
     background: linear-gradient(
       to bottom,
       rgba(17, 17, 17, 0.95),
@@ -696,10 +782,6 @@ header {
       transparent
     );
     text-align: center;
-  }
-
-  .hero-text {
-    max-width: 100%;
   }
 
   .king-name {
@@ -723,7 +805,7 @@ header {
     display: block;
   }
   .exit-menu i {
-    margin-left: 345px;
+    margin-left: 180px;
   }
   .nav-links {
     display: none;
@@ -770,42 +852,39 @@ header {
   }
   .gallery-hero {
     position: relative;
-    height: 100vh; /* Ensure the hero takes up the full viewport height */
+    height: 100vh;
     background-size: cover;
     background-position: center;
   }
 
-  /* Hero overlay with gradient */
   .gallery-hero .overlay,
   .hero .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50%; /* Half of the hero height */
-    background: linear-gradient(
-      to top,
-      rgba(17, 17, 17, 0.9),
-      transparent
-    ); /* Gradient from bottom */
+    height: 50%;
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 1rem; /* Some space from the bottom */
+
+    padding-bottom: 10rem;
   }
 
-  /* Adjust the text to be slightly above the bottom */
   .hero-text {
     color: #fff;
     text-align: center;
     width: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Optional: Semi-transparent background */
+    background: linear-gradient(
+      to right,
+      rgba(17, 17, 17, 0.9) 45%,
+      transparent 95%
+    );
     padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 2rem; /* Add margin to move the text up from the very bottom */
+    margin-bottom: 2rem;
   }
 
-  .gallery-title {
+  .hero-title {
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
   }
@@ -817,12 +896,12 @@ header {
     margin: 0 auto 0.8rem;
   }
 
-  .gallery-subtitle {
+  .hero-subtitle {
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
   }
 
-  .gallery-description {
+  .hero-description {
     font-size: 0.95rem;
   }
 
