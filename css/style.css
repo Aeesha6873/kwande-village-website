@@ -217,7 +217,7 @@ header {
   font-size: 1rem;
   color: #d6d6d6;
   opacity: 0.85;
-  text-align: left;
+
   line-height: 1.4;
 }
 
@@ -815,6 +815,7 @@ header {
 
   .hero-description {
     font-size: 0.95rem;
+    text-align: justify;
   }
   .about-details {
     padding: 0 20px;
