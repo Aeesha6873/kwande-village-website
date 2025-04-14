@@ -28,7 +28,7 @@ header {
   display: flex;
   flex-direction: column;
   background: linear-gradient(
-    135deg,
+    to top right,
     rgba(48, 56, 47, 0.85),
     rgba(17, 17, 17, 0.85)
   );
@@ -37,6 +37,17 @@ header {
   border-bottom: 2px solid rgba(255, 251, 223, 0.1);
   box-shadow: 0 10 30px rgba(48, 56, 47, 0.4);
   animation: floatIn 1.2s ease-out forwards;
+}
+
+@keyframes floatIn {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .logo {
@@ -60,12 +71,7 @@ header {
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--cream);
-  text-shadow: 0 0 8px var(--text-glow), 0 0 20px rgba(255, 251, 223, 0.1);
   letter-spacing: 1.5px;
-  transition: transform 0.3s ease;
-}
-.logo-text:hover {
-  transform: scale(1.05);
 }
 
 .nav-links {
@@ -106,34 +112,12 @@ header {
 .nav-links a:hover {
   color: var(--accent);
   background-color: rgba(255, 251, 223, 0.05);
-  box-shadow: 0 0 10px var(--accent);
   transform: translateY(-2px);
 }
 
 .nav-links a:hover::after {
   width: 100%;
   left: 0;
-}
-
-@keyframes floatIn {
-  0% {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes glowPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 10px var(--cream);
-  }
-  50% {
-    box-shadow: 0 0 20px var(--accent);
-  }
 }
 
 .hero {
@@ -146,7 +130,7 @@ header {
   align-items: flex-start;
   justify-content: flex-start;
   padding-top: 90px;
-  font-family: "Playfair Display", serif;
+  font-family: "Inconsolata", monospace;
 }
 
 .overlay {
@@ -161,7 +145,6 @@ header {
   align-items: center;
   justify-content: flex-start;
   padding: 5% 5% 0 5%;
-  box-sizing: border-box;
 }
 
 .hero-text {
@@ -172,14 +155,20 @@ header {
   transform: translateY(40px) scale(0.98);
 }
 
+@keyframes riseFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .king-name {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(270deg, #e4c15d, #fff8dc, #d4b24c);
-  background-size: 600% 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmerGlow 5s ease infinite;
   margin-bottom: 0.3rem;
   letter-spacing: 0.8px;
   line-height: 1.2;
@@ -214,36 +203,12 @@ header {
   margin-top: 0.2rem;
 }
 
-@keyframes riseFade {
-  0% {
-    opacity: 0;
-    transform: translateY(50px) scale(0.97);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes shimmerGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .gold-divider {
   height: 3px;
   width: 80px;
   background: linear-gradient(to right, #e4c15d, #fff8dc, #e4c15d);
   margin: 0.6rem 0 1rem;
   border-radius: 10px;
-  animation: shimmerGlow 6s ease infinite;
 }
 
 .king-quote {
@@ -254,54 +219,6 @@ header {
   opacity: 0.85;
   text-align: left;
   line-height: 1.4;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0.7;
-}
-
-.scroll-indicator span {
-  display: block;
-  width: 24px;
-  height: 40px;
-  border: 2px solid #e4c15d;
-  border-radius: 20px;
-  position: relative;
-}
-
-.scroll-indicator span::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: #e4c15d;
-  border-radius: 50%;
-  animation: scrollDown 2s infinite;
-}
-
-@keyframes scrollDown {
-  0% {
-    top: 8px;
-    opacity: 1;
-  }
-  50% {
-    top: 20px;
-    opacity: 0.6;
-  }
-  100% {
-    top: 8px;
-    opacity: 1;
-  }
 }
 
 .about-logo img {
@@ -322,7 +239,6 @@ header {
   gap: 1rem;
   text-align: center;
   padding: 1rem;
-  box-sizing: border-box;
   overflow-x: hidden;
   opacity: 0;
   transform: translateY(50px);
@@ -355,7 +271,6 @@ header {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   text-align: left;
   display: block;
 }
@@ -366,7 +281,7 @@ header {
 }
 .read-more a {
   font-size: 1.2rem;
-  font-family: "Segoe UI", sans-serif;
+
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -532,7 +447,8 @@ header {
   font-size: 2.3rem;
   font-weight: 600;
   color: #30382f;
-  position: relative;
+  text-align: center;
+
   margin-bottom: 3rem;
 }
 .section-title::after {
@@ -659,11 +575,6 @@ header {
 .hero-title {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(270deg, #e4c15d, #fff8dc, #d4b24c);
-  background-size: 600% 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmerGlow 5s ease infinite;
   margin-bottom: 0.3rem;
   letter-spacing: 0.8px;
   line-height: 1.2;
@@ -693,7 +604,6 @@ header {
 }
 
 .video-main-section .section-title {
-  font-family: "Playfair Display", serif;
   font-size: 2.8rem;
   font-weight: 700;
   color: var(--dark-olive);
@@ -815,8 +725,8 @@ header {
     display: flex;
     gap: 10px;
     width: 100%;
-    gap: 20px;
-    justify-content: flex-start;
+
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -872,6 +782,7 @@ header {
 
   .hero-text {
     color: #fff;
+    font-family: "Inconsolata", monospace;
     text-align: center;
     width: 100%;
     background: linear-gradient(
@@ -904,8 +815,37 @@ header {
   .hero-description {
     font-size: 0.95rem;
   }
-
-  .scroll-indicator {
-    display: none;
+  .about-details {
+    padding: 0 20px;
   }
+}
+
+.contact-map {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1900px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.contact-map:hover {
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: brightness(85%) contrast(1.1);
+  transition: 0.3s ease-in-out;
+}
+
+.contact-map iframe:hover {
+  filter: brightness(100%) contrast(1.2);
 }

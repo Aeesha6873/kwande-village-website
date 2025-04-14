@@ -44,8 +44,6 @@ if (galleryImagesEl.length > 0) {
       openModal(images[i]);
     });
   });
-} else {
-  console.log("Gallery images not found.");
 }
 
 function openModal(src) {
