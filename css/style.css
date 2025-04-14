@@ -130,7 +130,6 @@ header {
   align-items: flex-start;
   justify-content: flex-start;
   padding-top: 90px;
-  font-family: "Inconsolata", monospace;
 }
 
 .overlay {
@@ -172,6 +171,7 @@ header {
   margin-bottom: 0.3rem;
   letter-spacing: 0.8px;
   line-height: 1.2;
+  color: var(--accent);
 }
 
 .king-title {
@@ -578,6 +578,7 @@ header {
   margin-bottom: 0.3rem;
   letter-spacing: 0.8px;
   line-height: 1.2;
+  color: var(--accent);
 }
 
 .hero-subtitle {
@@ -695,7 +696,7 @@ header {
   }
 
   .king-name {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .king-title {
@@ -782,7 +783,7 @@ header {
 
   .hero-text {
     color: #fff;
-    font-family: "Inconsolata", monospace;
+
     text-align: center;
     width: 100%;
     background: linear-gradient(
